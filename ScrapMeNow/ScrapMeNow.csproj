@@ -89,8 +89,8 @@
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.11.23.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.11.23\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.28.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.28\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
       <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
@@ -195,18 +195,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="About.Designer.cs">
-      <DependentUpon>About.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Contact.Designer.cs">
-      <DependentUpon>Contact.cs</DependentUpon>
-    </Compile>
     <Compile Include="Export Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,12 +207,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Help.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Help.Designer.cs">
-      <DependentUpon>Help.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectLoader.cs">
       <SubType>Form</SubType>
@@ -233,20 +215,11 @@
       <DependentUpon>ProjectLoader.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="About.resx">
-      <DependentUpon>About.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Contact.resx">
-      <DependentUpon>Contact.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Export Form.resx">
       <DependentUpon>Export Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Help.resx">
-      <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectLoader.resx">
       <DependentUpon>ProjectLoader.cs</DependentUpon>
@@ -312,5 +285,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

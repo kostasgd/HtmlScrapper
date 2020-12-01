@@ -31,9 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.mytabControl = new System.Windows.Forms.TabControl();
             this.tabPageProduction = new System.Windows.Forms.TabPage();
@@ -135,9 +133,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.DimGray;
-            this.splitContainer1.Panel1.Controls.Add(this.btnHelp);
             this.splitContainer1.Panel1.Controls.Add(this.btnRefresh);
-            this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             // 
             // splitContainer1.Panel2
@@ -149,51 +145,20 @@
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
-            // btnHelp
-            // 
-            this.btnHelp.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnHelp.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnHelp.Image = global::ScrapMeNow.Properties.Resources.icons8_help_40;
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(1043, 0);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(160, 99);
-            this.btnHelp.TabIndex = 4;
-            this.btnHelp.Text = "Help";
-            this.btnHelp.UseVisualStyleBackColor = false;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
-            // 
             // btnRefresh
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnRefresh.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnRefresh.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnRefresh.Image = global::ScrapMeNow.Properties.Resources.icons8_refresh_40;
             this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefresh.Location = new System.Drawing.Point(280, -2);
+            this.btnRefresh.Location = new System.Drawing.Point(1016, 0);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(187, 99);
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.button2.Image = global::ScrapMeNow.Properties.Resources.icons8_mail_contact_30;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(781, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 99);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Contact";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -205,7 +170,7 @@
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 99);
+            this.button1.Size = new System.Drawing.Size(191, 99);
             this.button1.TabIndex = 0;
             this.button1.Text = "Export";
             this.button1.UseVisualStyleBackColor = false;
@@ -264,7 +229,7 @@
             this.chProdTime});
             this.lvProduction.Depth = 0;
             this.lvProduction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvProduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvProduction.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvProduction.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lvProduction.FullRowSelect = true;
             this.lvProduction.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -356,7 +321,7 @@
             this.chEvTimestamp});
             this.lvEvents.Depth = 0;
             this.lvEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvEvents.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvEvents.FullRowSelect = true;
             this.lvEvents.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvEvents.HideSelection = false;
@@ -426,7 +391,7 @@
             this.columnTimestamp});
             this.lvPeople.Depth = 0;
             this.lvPeople.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvPeople.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvPeople.FullRowSelect = true;
             this.lvPeople.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvPeople.HideSelection = false;
@@ -488,7 +453,7 @@
             this.chContrTime});
             this.lvContributions.Depth = 0;
             this.lvContributions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvContributions.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvContributions.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvContributions.FullRowSelect = true;
             this.lvContributions.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvContributions.HideSelection = false;
@@ -554,7 +519,7 @@
             this.chVtimestamp});
             this.lvVenue.Depth = 0;
             this.lvVenue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvVenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvVenue.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvVenue.FullRowSelect = true;
             this.lvVenue.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvVenue.HideSelection = false;
@@ -614,7 +579,7 @@
             this.chRoleTime});
             this.lvRoles.Depth = 0;
             this.lvRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvRoles.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvRoles.FullRowSelect = true;
             this.lvRoles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvRoles.HideSelection = false;
@@ -687,7 +652,7 @@
             this.chOrgTIme});
             this.lvOrganizer.Depth = 0;
             this.lvOrganizer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvOrganizer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lvOrganizer.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvOrganizer.FullRowSelect = true;
             this.lvOrganizer.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvOrganizer.HideSelection = false;
@@ -855,10 +820,8 @@
         private System.Windows.Forms.TabPage tabPageEvents;
         private System.Windows.Forms.TabPage tabPageContributions;
         private System.Windows.Forms.TabPage tabPageVenue;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.TabPage tabPageOrganizer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabPage tpPerson;

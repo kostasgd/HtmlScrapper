@@ -20,7 +20,6 @@ namespace ScrapMeNow
             skinmanager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.BlueGrey800,
                 MaterialSkin.Primary.Grey800, MaterialSkin.Primary.Grey800,
                 MaterialSkin.Accent.LightBlue700, MaterialSkin.TextShade.WHITE);
-
         }
 
         public int countCheckboxes()
@@ -38,15 +37,11 @@ namespace ScrapMeNow
             }
             return checkedBoxes;
         }
-
         public string getCheckboxesChecked()
         {
             var checkedBoxes = "";
-            // Iterate through all of the Controls in your Form
             foreach (Control c in this.groupBoxTables.Controls)
             {
-                // If one of the Controls is a CheckBox and it is checked, then
-                // increment your count
                 if (c is CheckBox && (c as CheckBox).Checked)
                 {
                     checkedBoxes = c.Text;
@@ -57,7 +52,7 @@ namespace ScrapMeNow
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            if (!(cbContributions.Checked | cbEvents.Checked | cbPersons.Checked | cbProduction.Checked | cbVenue.Checked))
+            if (!(cbContributions.Checked | cbEvents.Checked | cbPersons.Checked | cbProduction.Checked | cbVenue.Checked | cbOrganizer.Checked))
             {
                 MessageBox.Show("You must check at least one of the checkboxes to convert into csv.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -68,7 +63,7 @@ namespace ScrapMeNow
                     for (int i = 0; i < 1; i++)
                     {
                         MySqlConnection mySqlConnection = new MySqlConnection();
-                        string connetionString = "SERVER= 88.99.136.47;PORT=3306;DATABASE=xuxlffke_testdb;USER=xuxlffke_testuser;PASSWORD=';*r-?lL&FqV]';";
+                        string connetionString = "SERVER =88.99.136.47;PORT=3306;DATABASE=xuxlffke_scrapingdb;USER=xuxlffke_scraperuser;PASSWORD='lA,wA&5$w]}=';";
                         MySqlConnection mysqlCon = new MySqlConnection(connetionString);
                         mysqlCon.Open();
                         int count = 0;
@@ -117,7 +112,7 @@ namespace ScrapMeNow
 
         private void btnExportJSON_Click(object sender, EventArgs e)
         {
-            if (!(cbContributions.Checked | cbEvents.Checked | cbPersons.Checked | cbProduction.Checked | cbVenue.Checked))
+            if (!(cbContributions.Checked | cbEvents.Checked | cbPersons.Checked | cbProduction.Checked | cbVenue.Checked | cbOrganizer.Checked))
             {
                 MessageBox.Show("You must check at least one of the checkboxes.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -126,7 +121,7 @@ namespace ScrapMeNow
                 if (txtId.Text != "")
                 {
                     DataTable table = new DataTable();
-                    string connetionString = "SERVER= 88.99.136.47;PORT=3306;DATABASE=xuxlffke_testdb;USER=xuxlffke_testuser;PASSWORD=';*r-?lL&FqV]';";
+                    string connetionString = "SERVER =88.99.136.47;PORT=3306;DATABASE=xuxlffke_scrapingdb;USER=xuxlffke_scraperuser;PASSWORD='lA,wA&5$w]}=';";
                     MySqlConnection mysqlCon = new MySqlConnection(connetionString);
                     MySqlDataAdapter MyDA = new MySqlDataAdapter();
                     mysqlCon.Open();
@@ -194,7 +189,7 @@ namespace ScrapMeNow
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            if (!(cbContributions.Checked | cbEvents.Checked | cbPersons.Checked | cbProduction.Checked | cbVenue.Checked))
+            if (!(cbContributions.Checked | cbEvents.Checked | cbPersons.Checked | cbProduction.Checked | cbVenue.Checked | cbOrganizer.Checked))
             {
                 MessageBox.Show("You must check at least one of the checkboxes.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -202,8 +197,7 @@ namespace ScrapMeNow
             {
                 if (txtId.Text != "")
                 {
-                    DataSet set = new DataSet();
-                    string connetionString = "SERVER= 88.99.136.47;PORT=3306;DATABASE=xuxlffke_testdb;USER=xuxlffke_testuser;PASSWORD=';*r-?lL&FqV]';";
+                    string connetionString = "SERVER =88.99.136.47;PORT=3306;DATABASE=xuxlffke_scrapingdb;USER=xuxlffke_scraperuser;PASSWORD='lA,wA&5$w]}=';";
                     MySqlConnection mysqlCon = new MySqlConnection(connetionString);
                     SaveFileDialog save = new SaveFileDialog();
                     mysqlCon.Open();
@@ -223,7 +217,6 @@ namespace ScrapMeNow
                             for (int i = 0; i < countCheckboxes(); i++)
                             {
                                 var dataTable = GetTable(getCheckboxesChecked());
-
                                 wb.Worksheets.Add(dataTable);
                                 wb.SaveAs(save.FileName);
                             }
@@ -239,7 +232,7 @@ namespace ScrapMeNow
         }
         private DataTable GetTable(String tableName)
         {
-            string connetionString = "SERVER= 88.99.136.47;PORT=3306;DATABASE=xuxlffke_testdb;USER=xuxlffke_testuser;PASSWORD=';*r-?lL&FqV]';";
+            string connetionString = "SERVER =88.99.136.47;PORT=3306;DATABASE=xuxlffke_scrapingdb;USER=xuxlffke_scraperuser;PASSWORD='lA,wA&5$w]}=';";
             MySqlConnection mysqlCon = new MySqlConnection(connetionString);
             MySqlDataAdapter MyDA = new MySqlDataAdapter();
             string s = "";
