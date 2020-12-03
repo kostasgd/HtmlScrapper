@@ -59,7 +59,6 @@
             this.lvPeople = new MaterialSkin.Controls.MaterialListView();
             this.columnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnFname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnLastname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnSystemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTimestamp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageContributions = new System.Windows.Forms.TabPage();
@@ -68,8 +67,6 @@
             this.chPeopleID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chProductionID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chContrRoleID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chContrSystemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chContrTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageVenue = new System.Windows.Forms.TabPage();
             this.lvVenue = new MaterialSkin.Controls.MaterialListView();
             this.chVenueID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -103,6 +100,9 @@
             this.chRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chSystemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTimestamp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSubRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSysID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTimestp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -156,7 +156,8 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(187, 99);
             this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Text = "Show/Refresh";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -229,7 +230,7 @@
             this.chProdTime});
             this.lvProduction.Depth = 0;
             this.lvProduction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvProduction.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvProduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvProduction.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lvProduction.FullRowSelect = true;
             this.lvProduction.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -321,7 +322,7 @@
             this.chEvTimestamp});
             this.lvEvents.Depth = 0;
             this.lvEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvEvents.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvEvents.FullRowSelect = true;
             this.lvEvents.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvEvents.HideSelection = false;
@@ -386,12 +387,11 @@
             this.lvPeople.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnID,
             this.columnFname,
-            this.columnLastname,
             this.columnSystemID,
             this.columnTimestamp});
             this.lvPeople.Depth = 0;
             this.lvPeople.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvPeople.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvPeople.FullRowSelect = true;
             this.lvPeople.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvPeople.HideSelection = false;
@@ -412,13 +412,8 @@
             // 
             // columnFname
             // 
-            this.columnFname.Text = "Firstname";
+            this.columnFname.Text = "Fullname";
             this.columnFname.Width = 170;
-            // 
-            // columnLastname
-            // 
-            this.columnLastname.Text = "Lastname";
-            this.columnLastname.Width = 180;
             // 
             // columnSystemID
             // 
@@ -449,11 +444,12 @@
             this.chPeopleID,
             this.chProductionID,
             this.chContrRoleID,
-            this.chContrSystemID,
-            this.chContrTime});
+            this.clmSubRole,
+            this.clmSysID,
+            this.clmTimestp});
             this.lvContributions.Depth = 0;
             this.lvContributions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvContributions.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvContributions.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvContributions.FullRowSelect = true;
             this.lvContributions.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvContributions.HideSelection = false;
@@ -475,27 +471,17 @@
             // chPeopleID
             // 
             this.chPeopleID.Text = "PeopleID";
-            this.chPeopleID.Width = 85;
+            this.chPeopleID.Width = 162;
             // 
             // chProductionID
             // 
             this.chProductionID.Text = "ProductionID";
-            this.chProductionID.Width = 120;
+            this.chProductionID.Width = 208;
             // 
             // chContrRoleID
             // 
             this.chContrRoleID.Text = "RoleID";
-            this.chContrRoleID.Width = 80;
-            // 
-            // chContrSystemID
-            // 
-            this.chContrSystemID.Text = "SystemID";
-            this.chContrSystemID.Width = 90;
-            // 
-            // chContrTime
-            // 
-            this.chContrTime.Text = "Timestamp";
-            this.chContrTime.Width = 180;
+            this.chContrRoleID.Width = 130;
             // 
             // tabPageVenue
             // 
@@ -519,7 +505,7 @@
             this.chVtimestamp});
             this.lvVenue.Depth = 0;
             this.lvVenue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvVenue.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvVenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvVenue.FullRowSelect = true;
             this.lvVenue.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvVenue.HideSelection = false;
@@ -579,7 +565,7 @@
             this.chRoleTime});
             this.lvRoles.Depth = 0;
             this.lvRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvRoles.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvRoles.FullRowSelect = true;
             this.lvRoles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvRoles.HideSelection = false;
@@ -652,7 +638,7 @@
             this.chOrgTIme});
             this.lvOrganizer.Depth = 0;
             this.lvOrganizer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvOrganizer.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvOrganizer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.lvOrganizer.FullRowSelect = true;
             this.lvOrganizer.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvOrganizer.HideSelection = false;
@@ -775,6 +761,21 @@
             this.chTimestamp.Text = "Timestamp";
             this.chTimestamp.Width = 155;
             // 
+            // clmSubRole
+            // 
+            this.clmSubRole.Text = "Sub Role";
+            this.clmSubRole.Width = 155;
+            // 
+            // clmSysID
+            // 
+            this.clmSysID.Text = "SystemID";
+            this.clmSysID.Width = 155;
+            // 
+            // clmTimestp
+            // 
+            this.clmTimestp.Text = "Timestamp";
+            this.clmTimestp.Width = 185;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,7 +829,6 @@
         private MaterialSkin.Controls.MaterialListView lvPeople;
         private System.Windows.Forms.ColumnHeader columnID;
         private System.Windows.Forms.ColumnHeader columnFname;
-        private System.Windows.Forms.ColumnHeader columnLastname;
         private System.Windows.Forms.ColumnHeader columnSystemID;
         private System.Windows.Forms.ColumnHeader columnTimestamp;
         private MaterialSkin.Controls.MaterialListView lvVenue;
@@ -873,8 +873,6 @@
         private System.Windows.Forms.ColumnHeader chPriceRange;
         private System.Windows.Forms.ColumnHeader chEvSystemID;
         private System.Windows.Forms.ColumnHeader chEvTimestamp;
-        private System.Windows.Forms.ColumnHeader chContrSystemID;
-        private System.Windows.Forms.ColumnHeader chContrTime;
         private System.Windows.Forms.TabPage tabPageRoles;
         private MaterialSkin.Controls.MaterialListView lvRoles;
         private System.Windows.Forms.ColumnHeader chRoleID;
@@ -885,6 +883,9 @@
         private System.Windows.Forms.ColumnHeader chRoleName;
         private System.Windows.Forms.ColumnHeader chRoleSysID;
         private System.Windows.Forms.ColumnHeader chRoleTime;
+        private System.Windows.Forms.ColumnHeader clmSubRole;
+        private System.Windows.Forms.ColumnHeader clmSysID;
+        private System.Windows.Forms.ColumnHeader clmTimestp;
     }
 }
 

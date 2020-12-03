@@ -2,7 +2,7 @@
 using DocumentFormat.OpenXml.Drawing.Diagrams;
 using DocumentFormat.OpenXml.Office2013.Excel;
 using HtmlAgilityPack;
-using Markdig.Helpers;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using OfficeOpenXml.ConditionalFormatting;
 using OpenQA.Selenium;
@@ -20,7 +20,6 @@ using System.Timers;
 using System.Web;
 using System.Web.Security;
 using System.Windows.Forms;
-using Tulpep.NotificationWindow;
 
 namespace ScrapMeNow
 {
@@ -37,7 +36,9 @@ namespace ScrapMeNow
             splitContainer1.Panel1.ResetText();
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(60);
-            /*
+            var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
+            key.SetValue("ScrapMeNow", Application.ExecutablePath.ToString());
             if (Ping() & Sql())
             {
                 var timer = new System.Threading.Timer((e) =>
@@ -50,10 +51,8 @@ namespace ScrapMeNow
             {
                 MessageBox.Show("This computer is has an internet or sql issue . Please fix the problem..", "Network/Sql error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
-            }*/
-            getallproductionlinks();
+            }
         }
-
         private bool Ping()
         {
             System.Net.NetworkInformation.Ping pingSender = new System.Net.NetworkInformation.Ping();
@@ -90,20 +89,6 @@ namespace ScrapMeNow
         {
             Export_Form ef = new Export_Form();
             ef.ShowDialog();
-        }
-        public static void notification()
-        {
-            MySql.Data.MySqlClient.MySqlConnection mysqlCon = new MySqlConnection("SERVER= 88.99.136.47;PORT=3306;DATABASE=xuxlffke_scrapingdb;USER=xuxlffke_scraperuser;PASSWORD='lA,wA&5$w]}=';");
-            mysqlCon.Open();
-            MySqlCommand getNewProd = mysqlCon.CreateCommand();
-            getNewProd.CommandText = "SELECT Title FROM production WHERE ID = (SELECT MAX(ID) FROM production)";
-            getNewProd.ExecuteNonQuery();
-            object prodInserted = getNewProd.ExecuteScalar().ToString();
-            PopupNotifier popup = new PopupNotifier();
-            popup.TitleText = "ScrapMeNow";
-            popup.ContentText = "Έγινε εγγραφή της παράστασης με όνομα " + prodInserted.ToString();
-            popup.Popup();
-            mysqlCon.Close();
         }
         internal static string RemoveUnwantedTags(string data)
         {
@@ -148,7 +133,7 @@ namespace ScrapMeNow
                 DataTable table = new DataTable();
                 da.Fill(table);
 
-                SetHeight(lvProduction, 255);
+                SetHeight(lvProduction, 250);
                 lvProduction.View = System.Windows.Forms.View.Details;
                 using (MySqlConnection con = mysqlCon)
                 {
@@ -416,7 +401,6 @@ namespace ScrapMeNow
                     mycmd.Parameters.AddWithValue("@Duration", getDuration(line.ToString()));
                     mycmd.Parameters.AddWithValue("@SystemID", 3);
                     mycmd.ExecuteNonQuery();
-                    notification();
                 }
                 safety = "";
                 MySqlCommand lk = mysqlCon.CreateCommand();
@@ -686,7 +670,7 @@ namespace ScrapMeNow
         }
         public static string[] unwanted = { "ΠΡΩΤΑΓΩΝΙΣΤΟΥΝ", "ΠΑΙΖΟΥΝ", "ΑΛΦΑΒΗΤΙΚΑ", "ΔΙΑΝΟΜΗ" , "Παίζουν" , "Θεάτρου", "Θεάτρο","Πρωταγωνιστούν","Συντελεστές:","Συντελεστές",
                     "από", "ΣΥΝΤΕΛΕΣΤΕΣ", "Συμπαραγωγή", "Διανομή", "Ταυτότητα" , "ΑΛΦΑΒΗΤΙΚΑ","Θεάτρου" ,"Προπώληση","Εισιτήρια","Συμπαραγωγή","Πότε","Διάρκεια","ΤΟΥ ΔΗΜΗΤΡΙΟΥ ΒΥΖΑΝΤΙΟΥ","Ευχαριστούμε","*","Διατίθενται"};
-        public static int insertPersons(string link, int prodid)
+        public static void insertPersons(string link, int prodid)
         {
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load(link);
@@ -742,19 +726,45 @@ namespace ScrapMeNow
                                 }
                                 if (line.Contains(":") & !unwanted.Any(line.Contains))
                                 {
-                                    MySqlCommand roleexist = mysqlCon.CreateCommand();
-                                    roleexist.CommandText = "SELECT COUNT(*) FROM roles where Role LIKE'%" + role.TrimStart().TrimEnd() + "%'";
-                                    roleexist.ExecuteNonQuery();
-                                    int rolecount = int.Parse(roleexist.ExecuteScalar().ToString());
-                                    if (rolecount > 0)
+                                    if (!(role.Contains(" ") | role.Contains("-")|role.Contains(",")))
                                     {
-                                        proles.Add(role);
-                                        subroles.Add("");
+                                        MySqlCommand roleexist = mysqlCon.CreateCommand();
+                                        roleexist.CommandText = "SELECT COUNT(*) FROM roles where Role LIKE'%" + role.TrimStart().TrimEnd() + "%'";
+                                        roleexist.ExecuteNonQuery();
+                                        int rolecount = int.Parse(roleexist.ExecuteScalar().ToString());
+                                        if (rolecount > 0)
+                                        {
+                                            proles.Add(role);
+                                            subroles.Add("");
+                                        }
+                                        else
+                                        {
+                                            subroles.Add(role);
+                                            proles.Add("Ηθοποιός");
+                                        }
                                     }
-                                    else
+                                    else if (role.Contains("-") | role.Contains(",") | role.Contains(" "))
                                     {
-                                        subroles.Add(role);
-                                        proles.Add("Ηθοποιός");
+                                        int counter = 0;
+                                        string[] spl = role.Split(new Char[] { ',', '-',' ' });
+                                        foreach(var y in spl)
+                                        {
+                                            Console.WriteLine("y :" + y);
+                                            MySqlCommand roleexist = mysqlCon.CreateCommand();
+                                            roleexist.CommandText = "SELECT COUNT(*) FROM roles where Role LIKE'%" +y.TrimStart().TrimEnd() + "%'";
+                                            roleexist.ExecuteNonQuery();
+                                            counter += Int32.Parse(roleexist.ExecuteScalar().ToString());
+                                        }
+                                        if(counter > 0)
+                                        {
+                                            proles.Add(role);
+                                            subroles.Add("");
+                                        }
+                                        else
+                                        {
+                                            subroles.Add(role);
+                                            proles.Add("Ηθοποιός");
+                                        }
                                     }
                                 }
                                 if (!person.Contains(',') & !unwanted.Any(person.Contains))
@@ -939,6 +949,10 @@ namespace ScrapMeNow
                     }
                 }
             }
+            for(int h = 0; h < proles.Count; h++)
+            {
+                Console.WriteLine("Person " + peoples[h] + " Role :" +proles[h] +" Subroles :"+subroles[h]);
+            }
             string[] arrpeoples = peoples.ToArray();
             long count = 0;
             for (int u = 0; u < arrpeoples.Length; u++)
@@ -975,7 +989,6 @@ namespace ScrapMeNow
             insertContribution(peoplesafter, proles, subroles, prodid);
 
             mysqlCon.Close();
-            return peoplesafter.Count + proles.Count;
         }
 
         private void SetHeight(ListView listView, int height)
@@ -1023,6 +1036,7 @@ namespace ScrapMeNow
             mysqlCon.Close();
             return links;
         }
+        
         static List<string> getallproductionlinks()
         {
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
