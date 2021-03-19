@@ -6,3 +6,7 @@ Final version of my thesis project
 οι πληροφορίες  συλλέγονται και αποθηκεύονται με ακριβή και ορθό τρόπο.Συνοπτικά,έχοντας βγάλει ένα συμπέρασμα για τον κλάδο , μπορεί κανείς να καταλήξει στο συμπέρασμα ότι η λίστα με τα πράγματα που μπορείς να κάνεις με το Web Scraping είναι αμέτρητα, έχει να κάνει με το τι μπορείς να κάνεις 
 με τα δεδομένα που έχεις συλλέξει, και το πόσο χρήσιμα-πολίτιμα μπορείς να τα κάνεις.Η πτυχιακή απευθύνεται σε όσους θέλουν να ασχοληθούν με το Web Scraping και τις τεχνικές που σχετίζονται με αυτό. Στα κεφάλαια που θα αναλυθούν παρακάτω , θα εξηγήσω τόσο τα θεωρητικά μέρη τις πτυχιακής 
 ,όσο και το πρακτικό κομμάτι της.Θα δείξω κάθε εργαλείο που χρησιμοποίησα , τον τρόπο σκέψης μου, οτιδήποτε με βοήθησε στην υλοποίηση του.
+
+ScrapMeNow(University Dissertation)
+
+The project is build in C# on  Visual Studio 2019 environment for Desktop systems . The main goal of  the project is to  extract content and  data  specifically theatrical performances from viva.gr website .After extracting the expected data , we save them to an online MySQL database so we can have access to the scraped information , but also to extract data in whatever type of file we want . The program can extract records by different types like json, excel and csv.
